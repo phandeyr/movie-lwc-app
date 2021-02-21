@@ -5,9 +5,10 @@
             <h2>Movie App</h2>
         </div>
         <div>
-            <my-movie-search></my-movie-search>
+            <my-movie-search onsearch={handleSearch}></my-movie-search>
         </div>
     </header>
     <main class="content">
+        <my-movie-list search-term={searchTerm}></my-movie-list>
     </main>
 </template>
