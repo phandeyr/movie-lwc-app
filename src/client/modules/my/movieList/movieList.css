@@ -1,0 +1,23 @@
+.movie {
+    width: 100%;
+    display: flex;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #dddbda;
+    align-items: center;
+    border-left: 3px solid #0277bd;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.movie:hover {
+    background-color: #e1f5fe;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.movie img {
+    border-radius: 5px;
+    width: 100px;
+    height: 150px;
+    padding-right: 1em;
+}

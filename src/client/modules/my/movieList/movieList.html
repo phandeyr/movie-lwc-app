@@ -1,5 +1,8 @@
 <template>
     <template for:each={movies} for:item='movie'>
-        <p key={movie.imdbID}>{movie.Title}</p>
+        <a key={movie.imdbID} class="movie">
+            <img src={movie.Poster} alt={movie.Title} >
+            <p class="title">{movie.Title} ({movie.Year})</p>
+        </a>
     </template>
 </template>
