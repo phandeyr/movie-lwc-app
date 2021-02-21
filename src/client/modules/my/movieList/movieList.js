@@ -35,4 +35,19 @@ export default class MovieList extends LightningElement {
             this.movies = response
         })
     }
+
+    /**
+     * @description Sends event with the movie id
+     * @param {*} event
+     */
+    handleMovie(event) {
+        const state = new CustomEvent('state', {
+            detail: {
+                movieId: event.currentTarget.dataset.value,
+                state: 'details'
+            }
+        })
+
+        this.dispatchEvent(state)
+    }
 }

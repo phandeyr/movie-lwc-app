@@ -9,6 +9,11 @@
         </div>
     </header>
     <main class="content">
-        <my-movie-list search-term={searchTerm}></my-movie-list>
+        <template if:true={isStateList}>
+            <my-movie-list onstate={handleState} search-term={searchTerm}></my-movie-list>
+        </template>
+        <template if:false={isStateList}>
+            <my-movie-details onstate={handleState} movie-id={movieId}></my-movie-details>
+        </template>
     </main>
 </template>

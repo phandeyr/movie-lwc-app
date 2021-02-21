@@ -1,6 +1,6 @@
 <template>
     <template for:each={movies} for:item='movie'>
-        <a key={movie.imdbID} class="movie">
+        <a key={movie.imdbID} class='movie' data-value={movie.imdbID} onclick={handleMovie}>
             <img src={movie.Poster} alt={movie.Title} >
             <p class="title">{movie.Title} ({movie.Year})</p>
         </a>
