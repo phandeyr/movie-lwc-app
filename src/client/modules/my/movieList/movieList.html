@@ -7,7 +7,8 @@
     <template if:false={isLoading}>
         <template for:each={movies} for:item='movie'>
             <a key={movie.imdbID} class='movie' data-value={movie.imdbID} onclick={handleMovie}>
-                <img src={movie.Poster} alt={movie.Title} >
+                <img if:true={movie.Poster} src={movie.Poster} alt={movie.Title} class="movie-item" />
+                <i if:false={movie.Poster} class="fa fa-image movie-item movie-item-no-image center"></i>
                 <p class="title">{movie.Title} ({movie.Year})</p>
             </a>
         </template>

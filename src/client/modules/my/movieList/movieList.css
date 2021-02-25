@@ -15,13 +15,20 @@
     text-decoration: none;
 }
 
-.movie img {
+.movie-item {
     border-radius: 5px;
-    width: 100px;
-    height: 150px;
-    padding-right: 1em;
+    line-height: 150px;
+    width: 105px;
+}
+
+.movie-item-no-image {
+    border: 1px solid grey;
 }
 
 .center {
     text-align: center;
+}
+
+.title {
+    padding-left: 1rem;
 }

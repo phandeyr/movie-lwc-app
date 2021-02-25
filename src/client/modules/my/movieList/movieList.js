@@ -41,13 +41,24 @@ export default class MovieList extends LightningElement {
 
     /**
      * @description Invokes the api and sets the response to the movies array
-     * Sorts movies by the latest date
+     * Removes duplicates from api response and sorts movies by the latest date
      */
     getMovies() {
         this.isLoading = true
         getMovies({ searchTerm: this.searchTerm })
         .then(response => {
-            this.movies = response.sort((a,b) => b.Year - a.Year)
+            const movieSet = new Set();
+            this.movies = response.reduce((acc,movie) => {
+                if (!movieSet.has(movie.imdbID)){
+                    // If no poster available, set to null
+                    if (movie.Poster === 'N/A') {
+                        movie.Poster = null
+                    }
+                    movieSet.add(movie.imdbID,movie)
+                    acc.push(movie)
+                }
+                return acc;
+            },[]).sort((a,b) => b.Year - a.Year)
         })
         .finally(() => { this.isLoading = false })
     }
