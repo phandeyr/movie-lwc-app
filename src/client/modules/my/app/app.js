@@ -17,6 +17,14 @@ export default class App extends LightningElement {
      */
     state = 'list'
 
+    constructor() {
+        super()
+        const styles = document.createElement('link');
+        styles.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+        styles.rel = 'stylesheet';
+        this.template.appendChild(styles);
+    }
+
     /**
      * @description Sets the search term
      * @param {*} event
