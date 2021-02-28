@@ -1,11 +1,15 @@
 <template>
     <header>
-        <div class="left">
-            <i class="fa fa-film"></i>
-            <h2>Movie App</h2>
-        </div>
-        <div>
-            <my-movie-search onsearch={handleSearch}></my-movie-search>
+        <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center">
+            <div class="slds-col slds-p-horizontal_xx-small">
+                <i class="fa fa-film"></i>
+            </div>
+            <div class="slds-col slds-show_small">
+                <h2>Movie App</h2>
+            </div>
+            <div class="slds-col slds-medium-size_1-of-2 slds-p-horizontal_small">
+                <my-movie-search onsearch={handleSearch}></my-movie-search>
+            </div>
         </div>
     </header>
     <main class="content">

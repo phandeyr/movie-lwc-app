@@ -3,11 +3,13 @@
     "description": "My amazing LWC app",
     "version": "0.0.1",
     "author": "Renuka Phandey",
-    "bugs": "https://github.com/Renuka Phandey/movie-lwc-app/issues",
+    "bugs": "https://github.com/phandeyr/movie-lwc-app/issues",
     "dependencies": {
+        "@salesforce-ux/design-system": "^2.14.2",
         "compression": "^1.7.4",
         "express": "^4.17.1",
-        "helmet": "^4.4.1"
+        "helmet": "^4.4.1",
+        "lightning-base-components": "^1.11.2-alpha"
     },
     "devDependencies": {
         "eslint": "^7.20.0",
@@ -22,7 +24,7 @@
         "npm": ">=6.4.1",
         "yarn": ">=1.9.4"
     },
-    "homepage": "https://github.com/Renuka Phandey/movie-lwc-app",
+    "homepage": "https://github.com/phandeyr/movie-lwc-app",
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged"
@@ -51,7 +53,7 @@
         ],
         "exec": "node ./src/server/api.js"
     },
-    "repository": "Renuka Phandey/movie-lwc-app",
+    "repository": "phandeyr/movie-lwc-app",
     "scripts": {
         "build": "lwc-services build -m production",
         "build:development": "lwc-services build",
