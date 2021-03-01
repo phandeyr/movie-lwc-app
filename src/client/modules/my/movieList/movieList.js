@@ -13,14 +13,6 @@ export default class MovieList extends LightningElement {
      */
     isLoading = false
 
-    constructor() {
-        super()
-        const styles = document.createElement('link');
-        styles.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
-        styles.rel = 'stylesheet';
-        this.template.appendChild(styles);
-    }
-
     /**
      * @description Setter for the search term
      */

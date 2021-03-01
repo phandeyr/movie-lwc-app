@@ -1,16 +1,22 @@
 <template>
     <template if:true={isLoading}>
-        <div class="center">
-            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-        </div>
+        <lightning-spinner alternative-text="Loading" size="meduim"></lightning-spinner>
     </template>
     <template if:false={isLoading}>
-        <template for:each={movies} for:item='movie'>
-            <a key={movie.imdbID} class='movie' data-value={movie.imdbID} onclick={handleMovie}>
-                <img if:true={movie.Poster} src={movie.Poster} alt={movie.Title} class="movie-item" />
-                <i if:false={movie.Poster} class="fa fa-image movie-item movie-item-no-image center"></i>
-                <p class="title">{movie.Title} ({movie.Year})</p>
-            </a>
-        </template>
+        <div class="slds-grid slds-wrap slds-grid_align-center">
+            <template for:each={movies} for:item="movie">
+                <div key={movie.imdbID} onclick={handleMovie} data-value={movie.imdbID} class="slds-col slds-size_1-of-1 slds-medium-size_5-of-12 slds-large-size_4-of-12 slds-m-vertical_xx-small slds-m-horizontal_small movie">
+                    <div class="slds-grid slds-grid_vertical-align-center slds-gutters_direct-xx-small">
+                        <div class="slds-col slds-size_1-of-7">
+                            <img if:true={movie.Poster} src={movie.Poster} alt={movie.Title} class="movie-item" />
+                            <i if:false={movie.Poster} class="fa fa-image movie-item movie-item-no-image"></i>
+                        </div>
+                        <div class="slds-col slds-size_6-of-7">
+                            {movie.Title} ({movie.Year})
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
     </template>
 </template>

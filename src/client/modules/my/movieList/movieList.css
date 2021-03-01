@@ -1,12 +1,8 @@
 .movie {
-    width: 100%;
-    display: flex;
-    margin: 1rem 0;
-    padding: 1rem;
     border: 1px solid #dddbda;
-    align-items: center;
+    max-width: 600px;
     border-left: 3px solid black;
-    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 0.5rem;
 }
 
 .movie:hover {
@@ -17,18 +13,8 @@
 
 .movie-item {
     border-radius: 5px;
-    line-height: 150px;
-    width: 105px;
 }
 
 .movie-item-no-image {
     border: 1px solid grey;
-}
-
-.center {
-    text-align: center;
-}
-
-.title {
-    padding-left: 1rem;
 }
