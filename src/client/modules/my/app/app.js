@@ -1,5 +1,7 @@
 import { LightningElement } from 'lwc';
 
+const STATE_LIST = 'list'
+
 export default class App extends LightningElement {
 
     /**
@@ -15,7 +17,7 @@ export default class App extends LightningElement {
     /**
      * @description The state to show, default list
      */
-    state = 'list'
+    state = STATE_LIST
 
     /**
      * @description Sets the search term
@@ -23,6 +25,7 @@ export default class App extends LightningElement {
      */
     handleSearch(event) {
         this.searchTerm = event.detail.searchTerm
+        this.state = STATE_LIST
     }
 
     /**
@@ -38,6 +41,6 @@ export default class App extends LightningElement {
      * @description Getter for the state
      */
     get isStateList() {
-        return this.state === 'list'
+        return this.state === STATE_LIST
     }
 }

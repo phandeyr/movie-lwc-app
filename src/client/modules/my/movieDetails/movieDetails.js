@@ -37,6 +37,12 @@ export default class MovieDetails extends LightningElement {
 
         getMovieDetails({ movieId: this.movieId })
         .then(response => {
+            // Loop through api response and set value to null if 'N/A'
+            for (const prop in response) {
+                if (response[prop] === 'N/A') {
+                    response[prop] = null
+                }
+            }
             this.movieDetail = response
         })
         .finally(() =>  {

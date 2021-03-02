@@ -1,5 +1,27 @@
 <template>
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="meduim"></lightning-spinner>
+    </template>
     <template if:false={isLoading}>
-        <h2><a href="#" onclick={handleMovies}>Movies</a> &gt; {movieDetail.Title}</h2>
+        <p class="slds-p-bottom_small"><a href="#" onclick={handleMovies}>Movies</a> &gt; {movieDetail.Title}</p>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-5 slds-medium-size_4-of-12 slds-large-size_2-of-12">
+                <img if:true={movieDetail.Poster} src={movieDetail.Poster} alt={movieDetail.Title}  />
+                <lightning-icon if:false={movieDetail.Poster} class="slds-align_absolute-center" icon-name="utility:image" size="large"></lightning-icon>
+            </div>
+            <div class="slds-col slds-size_4-of-5 slds-medium-size_8-of-12 slds-large-size_10-of-12">
+                <div class="slds-border_bottom">
+                    <p class="slds-text-heading_medium title">{movieDetail.Title}</p>
+                    <p class="slds-text-heading_small"><strong>{movieDetail.Year}</strong></p>
+                    <p>{movieDetail.Runtime}</p>
+                    <p>{movieDetail.Rated}</p>
+                </div>
+                <div>
+                    <p if:true={movieDetail.Director}>Directed By {movieDetail.Director}</p>
+                    <p if:true={movieDetail.Writer}>Written By {movieDetail.Writer}</p>
+                    <p>{movieDetail.Plot}</p>
+                </div>
+            </div>
+        </div>
     </template>
 </template>
