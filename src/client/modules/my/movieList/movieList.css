@@ -13,8 +13,11 @@
 
 .movie-item {
     border-radius: 5px;
+    height: 70px;
+    width: 60px;
+    object-fit: cover;
 }
 
 .movie-item-no-image {
-    border: 1px solid grey;
+    height: 70px;
 }

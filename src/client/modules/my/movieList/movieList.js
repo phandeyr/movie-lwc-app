@@ -14,6 +14,11 @@ export default class MovieList extends LightningElement {
     isLoading = false
 
     /**
+     * @description Message if no results found
+     */
+    noResults = null
+
+    /**
      * @description Setter for the search term
      */
     @api
@@ -39,7 +44,13 @@ export default class MovieList extends LightningElement {
         this.isLoading = true
         getMovies({ searchTerm: this.searchTerm })
         .then(response => {
-            const movieSet = new Set();
+            if (!response) {
+                this.noResults = 'No results found'
+                return
+            }
+
+            this.noResults = null
+            const movieSet = new Set()
             this.movies = response.reduce((acc,movie) => {
                 if (!movieSet.has(movie.imdbID)){
                     // If no poster available, set to null
@@ -49,7 +60,7 @@ export default class MovieList extends LightningElement {
                     movieSet.add(movie.imdbID,movie)
                     acc.push(movie)
                 }
-                return acc;
+                return acc
             },[]).sort((a,b) => b.Year - a.Year)
         })
         .finally(() => { this.isLoading = false })
