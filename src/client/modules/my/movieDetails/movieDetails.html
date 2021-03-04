@@ -9,17 +9,49 @@
                 <img if:true={movieDetail.Poster} src={movieDetail.Poster} alt={movieDetail.Title}  />
                 <lightning-icon if:false={movieDetail.Poster} class="slds-align_absolute-center" icon-name="utility:image" size="large"></lightning-icon>
             </div>
-            <div class="slds-col slds-size_4-of-5 slds-medium-size_8-of-12 slds-large-size_10-of-12">
+            <div class="slds-col slds-size_4-of-5 slds-medium-size_8-of-12 slds-large-size_10-of-12 movie-details">
                 <div class="slds-border_bottom">
-                    <p class="slds-text-heading_medium title">{movieDetail.Title}</p>
-                    <p class="slds-text-heading_small"><strong>{movieDetail.Year}</strong></p>
-                    <p>{movieDetail.Runtime}</p>
-                    <p>{movieDetail.Rated}</p>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-large-size_1-of-2">
+                            <p class="slds-text-heading_medium title">{movieDetail.Title}</p>
+                            <p class="slds-text-heading_small"><strong>{movieDetail.Year}</strong></p>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col slds-large-size_1-of-9">{movieDetail.Runtime}</div>
+                                <div class="slds-col slds-large-size_8-of-9">{movieDetail.Rated}</div>
+                            </div>
+                            <p>{movieDetail.Genre}</p>
+                        </div>
+                        <template for:each={movieDetail.Ratings} for:item="rating">
+                            <div class="slds-col slds-border_right slds-align_absolute-center" key={rating.Source}>
+                                <p class="slds-p-right_x-small">{rating.Value}</p>
+                                <p><strong>{rating.Source}</strong></p>
+                            </div>
+                        </template>
+                    </div>
                 </div>
                 <div>
-                    <p if:true={movieDetail.Director}>Directed By {movieDetail.Director}</p>
-                    <p if:true={movieDetail.Writer}>Written By {movieDetail.Writer}</p>
-                    <p>{movieDetail.Plot}</p>
+                    <template if:true={movieDetail.Plot}>
+                        <p><strong>Plot</strong></p>
+                        <p>{movieDetail.Plot}</p>
+                    </template>
+                    <template if:true={movieDetail.Actors}>
+                        <p><strong>Cast</strong></p>
+                        <template for:each={movieDetail.Actors} for:item="actor">
+                            <p key={actor}>{actor}</p>
+                        </template>
+                    </template>
+                    <template if:true={movieDetail.Director}>
+                        <p><strong>Directed By</strong></p>
+                        <template for:each={movieDetail.Director} for:item="director">
+                            <p key={director}>{director}</p>
+                        </template>
+                    </template>
+                    <template if:true={movieDetail.Writer}>
+                        <p><strong>Written By</strong></p>
+                        <template for:each={movieDetail.Writer} for:item="writer">
+                            <p key={writer}>{writer}</p>
+                        </template>
+                    </template>
                 </div>
             </div>
         </div>
