@@ -12,17 +12,18 @@
             <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_10-of-12 movie-details">
                 <div class="slds-border_bottom slds-m-bottom_xx-small">
                     <div class="slds-grid slds-wrap slds-gutters">
-                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
                             <p class="slds-text-heading_medium title">{movieDetail.Title}</p>
                             <p class="slds-text-heading_small"><strong>{movieDetail.Year}</strong></p>
-                            <p>{movieDetail.Runtime}  &nbsp;&nbsp;{movieDetail.Rated}</p>
+                            <p if:true={movieDetail.Runtime}>{movieDetail.Runtime}  &nbsp;&nbsp;{movieDetail.Rated}</p>
+                            <p if:false={movieDetail.Runtime}>{movieDetail.Rated}</p>
                         </div>
-                        <div class="slds-col slds-align_bottom slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_2-of-3">
-                            <div class="slds-grid slds-wrap slds-gutters">
+                        <div class="slds-col slds-align-bottom slds-size_1-of-1 slds-large-size_2-of-3">
+                            <div class="slds-grid slds-grid_align-spread slds-wrap slds-gutters">
                                 <div class="slds-col slds-size_1-of-1">{movieDetail.Genre}</div>
                                 <template for:each={movieDetail.Ratings} for:item="rating">
-                                    <div class="slds-col slds-large-size_1-of-3 slds-border_right" key={rating.Source}>
-                                        <p>{rating.Value} &nbsp;&nbsp;<strong>{rating.Source}</strong></p>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-4" key={rating.Source}>
+                                        <p><strong>{rating.Source}</strong> &nbsp;&nbsp;{rating.Value}</p>
                                     </div>
                                 </template>
                             </div>
@@ -30,28 +31,38 @@
                     </div>
                 </div>
                 <div>
-                    <template if:true={movieDetail.Plot}>
+                    <div>
                         <p><strong>Plot</strong></p>
-                        <p>{movieDetail.Plot}</p>
-                    </template>
-                    <template if:true={movieDetail.Actors}>
+                        <p if:true={movieDetail.Plot}>{movieDetail.Plot}</p>
+                        <p if:false={movieDetail.Plot}>Not Available</p>
+                    </div>
+                    <div>
                         <p><strong>Cast</strong></p>
-                        <template for:each={movieDetail.Actors} for:item="actor">
-                            <p key={actor}>{actor}</p>
+                        <template if:true={movieDetail.Actors}>
+                            <template for:each={movieDetail.Actors} for:item="actor">
+                                <p key={actor}>{actor}</p>
+                            </template>
                         </template>
-                    </template>
-                    <template if:true={movieDetail.Director}>
+                        <p if:false={movieDetail.Actors}>Not Available</p>
+                    </div>
+                    <div>
                         <p><strong>Directed By</strong></p>
-                        <template for:each={movieDetail.Director} for:item="director">
-                            <p key={director}>{director}</p>
+                        <template if:true={movieDetail.Director}>
+                            <template for:each={movieDetail.Director} for:item="director">
+                                <p key={director}>{director}</p>
+                            </template>
                         </template>
-                    </template>
-                    <template if:true={movieDetail.Writer}>
+                        <p if:false={movieDetail.Director}>Not Available</p>
+                    </div>
+                    <div>
                         <p><strong>Written By</strong></p>
-                        <template for:each={movieDetail.Writer} for:item="writer">
-                            <p key={writer}>{writer}</p>
+                        <template if:true={movieDetail.Writer}>
+                            <template for:each={movieDetail.Writer} for:item="writer">
+                                <p key={writer}>{writer}</p>
+                            </template>
                         </template>
-                    </template>
+                        <p if:false={movieDetail.Writer}>Not Available</p>
+                    </div>
                 </div>
             </div>
         </div>
