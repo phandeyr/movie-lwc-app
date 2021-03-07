@@ -22,7 +22,7 @@
                             <div class="slds-grid slds-grid_align-spread slds-wrap slds-gutters">
                                 <div class="slds-col slds-size_1-of-1">{movieDetail.Genre}</div>
                                 <template for:each={movieDetail.Ratings} for:item="rating">
-                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-4" key={rating.Source}>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3" key={rating.Source}>
                                         <p><strong>{rating.Source}</strong> &nbsp;&nbsp;{rating.Value}</p>
                                     </div>
                                 </template>
