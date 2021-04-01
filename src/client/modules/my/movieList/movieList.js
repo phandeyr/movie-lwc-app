@@ -19,6 +19,11 @@ export default class MovieList extends LightningElement {
     noResults = null
 
     /**
+     * @description Determines whether an error occurred
+     */
+    error = false
+
+    /**
      * @description Setter for the search term
      */
     @api
@@ -63,6 +68,7 @@ export default class MovieList extends LightningElement {
                 return acc
             },[]).sort((a,b) => b.Year - a.Year)
         })
+        .catch(() => { this.error = true })
         .finally(() => { this.isLoading = false })
     }
 

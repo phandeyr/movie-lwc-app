@@ -14,6 +14,11 @@ export default class MovieDetails extends LightningElement {
     isLoading = false
 
     /**
+     * @description Determines whether an error occurred
+     */
+    error = false
+
+    /**
      * @description Setter for the movie id
      */
     @api
@@ -49,6 +54,7 @@ export default class MovieDetails extends LightningElement {
             }
             this.movieDetail = response
         })
+        .catch(() => { this.error = true })
         .finally(() =>  {
             this.isLoading = false
         })
